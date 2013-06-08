@@ -1,0 +1,21 @@
+#container{
+    width: 1024px;
+    float:left;
+}
+#container div{
+    width: 100%;
+    float:left;
+}
+#imageContainer {
+    border: 2px green solid;
+}
+#header{
+    border: 2px gray solid;
+}
+#mainImage{
+    max-height: 750px;
+    border: 2px red solid;
+}
+#mainCaption{
+    border: 2px blue solid;
+}

@@ -1,1 +1,11 @@
-hi Hello You Write I Draw
+extends layout 
+block content
+    #container 
+        #header You Write I Draw
+        #imageContainer 
+            img#mainImage
+        #mainCaption This is the google chrome logo
+    script
+        $(function() {
+            $('#mainImage').attr('src', 'images/test.jpg')
+        })

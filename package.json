@@ -1,0 +1,9 @@
+{
+  "name": "YouWriteIDraw",
+  "description": "A collaborative site where one person writes a single sentence and another illustrates it. ",
+  "version": "0.0.0",
+  "dependencies": { "express": "3.x", "jade": "0.28.x"},
+  "subdomain": "bzurer-YouWriteIDraw",
+  "scripts": {"start": "node app.js"},
+  "engines": {"node": "0.8.x"}
+}

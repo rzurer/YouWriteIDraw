@@ -1,11 +1,17 @@
 extends layout 
 block content
     #container 
-        #header You Write I Draw
+        .headerContainer 
+            span You Write 
+        //-#mainCaption All the puppies rushed out of the playbocken when the ice cream truck arrived.
+        #mainCaption The berry bush became frightened because of too much wine and song.
+         .headerContainer 
+           span I Draw 
         #imageContainer 
             img#mainImage
-        #mainCaption This is the google chrome logo
     script
         $(function() {
-            $('#mainImage').attr('src', 'images/test.jpg')
+            var imagesDirectory = "https://s3.amazonaws.com/YouWriteIDraw/";
+            //$('#mainImage').attr('src', imagesDirectory + 'allthepuppies.png');
+            $('#mainImage').attr('src', imagesDirectory + 'berrybush.png');
         })

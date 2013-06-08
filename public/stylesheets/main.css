@@ -1,21 +1,22 @@
-#container{
-    width: 1024px;
+#container {
+     margin-left: 30px;
+   margin-top: 10px;
+    width: 1000px;
+    font-family: 'Indie Flower';
+    background-color: whitesmoke;
     float:left;
 }
-#container div{
+#container div {
     width: 100%;
     float:left;
 }
-#imageContainer {
-    border: 2px green solid;
+.headerContainer {
+    font-size: 36px;
+    font-weight: bold;
 }
-#header{
-    border: 2px gray solid;
-}
-#mainImage{
+#mainImage {
     max-height: 750px;
-    border: 2px red solid;
 }
 #mainCaption{
-    border: 2px blue solid;
+   font-size: 24px;
 }

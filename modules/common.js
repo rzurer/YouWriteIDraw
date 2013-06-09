@@ -2,7 +2,7 @@
 exports.common = function (storage) {
 	var that;
 	that = {
-		getCurrentDate: function (dayFirst) {
+		getCurrentDate : function (dayFirst) {
 			var date, day, month, year, monthString, dayString;
 			date = new Date();
 			day = date.getDate();
@@ -10,12 +10,20 @@ exports.common = function (storage) {
 			monthString = (String(month).length < 2 ? '0' : '') + month;
 			dayString = (String(day).length < 2 ? '0' : '') + day;
 			year = date.getFullYear();
-			return dayFirst ? dayString + '/' + monthString + '/' + year : monthString + '/' + dayString + '/' + year;
+			return dayFirst ? dayString + '/' + monthString +  '/' + year : monthString + '/' + dayString +  '/' + year;
 		},
-		getCurrentDateTime: function () {
-			return new Date();
-		},
-		indexOfFirstMatch: function (array, predicate) {
+	    setAjaxClickFunction : function (element, clickFunction) {
+	      element.click(function () {
+	        if (!$(this).data("ajaxRequestPending")) {
+	          clickFunction();
+	        }
+	      }).ajaxStart(function () {
+	        $(this).data("ajaxRequestPending", true);
+	      }).ajaxStop(function () {
+	        $(this).removeData("ajaxRequestPending");
+	      });
+	    },
+		indexOfFirstMatch : function (array, predicate) {
 			var i, element;
 			for (i = 0; i < array.length; i += 1) {
 				element = array[i];
@@ -24,7 +32,7 @@ exports.common = function (storage) {
 				}
 			}
 		},
-		indexOfLastMatch: function (array, predicate) {
+		indexOfLastMatch : function (array, predicate) {
 			var i, element;
 			for (i = array.length - 1; i >= 0; i -= 1) {
 				element = array[i];
@@ -33,10 +41,10 @@ exports.common = function (storage) {
 				}
 			}
 		},
-		indicesOfMatch: function (array, predicate) {
+		indicesOfMatch : function (array, predicate) {
 			return {
-				first: that.indexOfFirstMatch(array, predicate),
-				last: that.indexOfLastMatch(array, predicate)
+				first : that.indexOfFirstMatch(array, predicate),
+				last : that.indexOfLastMatch(array, predicate)
 			};
 		},
 		getPropertyValue: function (array, propertyName) {
@@ -79,39 +87,33 @@ exports.common = function (storage) {
 				value: value
 			});
 		},
-		disableControl: function (control, opacity) {
+		disableControl : function (control, opacity) {
 			control.unbind("click");
 			control.css('opacity', opacity || '0.3');
 		},
-		disableControls: function (controls, opacity) {
+		disableControls : function (controls, opacity) {
 			controls.forEach(function (control) {
 				control.unbind("click");
 				control.css('opacity', opacity || '0.3');
 			});
 		},
-		enableControl: function (control, clickCallback, opacity) {
+		enableControl : function (control, clickCallback, opacity) {
 			control.click(clickCallback);
 			control.css('opacity', opacity || '1.0');
 		},
-		getStorage: function () {
+		getStorage : function () {
 			return storage;
 		},
-		setStorage: function (value) {
+		setStorage : function (value) {
 			storage = value;
 		},
-		isUndefinedOrWhitespace: function (str) {
-			return !str || str.trim().length === 0;
-		},
-		getFileName: function (filePath) {
-			return filePath.substr(filePath.lastIndexOf('/') + 1);
-		},
-		trim: function (source) {
+		trim : function (source) {
 			if (!source || !source.length || source.length === 0) {
 				return source;
 			}
 			return source.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
 		},
-		findFirst: function (array, propertyname, value) {
+		findFirst : function (array, propertyname, value) {
 			var i, element;
 			for (i = 0; i < array.length; i += 1) {
 				element = array[i];
@@ -127,10 +129,7 @@ exports.common = function (storage) {
 			}
 			for (prop in obj) {
 				if (obj.hasOwnProperty(prop)) {
-					that.push({
-						name: prop,
-						value: obj[prop]
-					});
+					that.push({name : prop, value : obj[prop]});
 				}
 			}
 			return that;
@@ -141,7 +140,7 @@ exports.common = function (storage) {
 		propertiesExist: function (obj) {
 			return that.getPropertyCount(obj) > 0;
 		},
-		showToaster: function (parent, toaster, text, callback) { //tested
+		showToaster : function (parent, toaster, text, callback) { //tested
 			var left, top, width;
 			top = parent.offset().top;
 			left = parent.offset().left;
@@ -157,13 +156,13 @@ exports.common = function (storage) {
 				callback();
 			}
 		},
-		removeLocalStorageKey: function (name) {
+		removeLocalStorageKey : function (name) {
 			storage.removeItem(name);
 		},
-		placeInLocalStorage: function (name, value) {
+		placeInLocalStorage : function (name, value) {
 			storage[name] = JSON.stringify(value);
 		},
-		getFromLocalStorage: function (name) {
+		getFromLocalStorage : function (name) {
 			var value;
 			value = storage[name];
 			try {
@@ -172,13 +171,13 @@ exports.common = function (storage) {
 				return value;
 			}
 		},
-		getFromOrPlaceInLocalStorage: function (name, createFunction) {
+		getFromOrPlaceInLocalStorage : function (name, createFunction) {
 			if (!storage[name]) {
 				that.placeInLocalStorage(name, createFunction());
 			}
 			return that.getFromLocalStorage(name);
 		},
-		scrutinize: function (obj, silent) {
+		scrutinize : function (obj, silent) {
 			var property, text;
 			text = '';
 			for (property in obj) {

@@ -1,13 +1,17 @@
 extends layout 
 block content
-    #container 
+    #container
+        .navigatorContainer
+            img#navigateFirst(src='/images/first.png')
+            img#navigatePrevious(src='/images/previous.png')
+            img#navigateNext(src='/images/next.png')
+            img#navigateLast(src='/images/last.png')
         .headerContainer 
             span You Write 
-        //-#mainCaption All the puppies rushed out of the playbocken when the ice cream truck arrived.
-        #mainCaption The berry bush became frightened because of too much wine and song.
-         .headerContainer 
+        #mainCaption
+        .headerContainer 
            span I Draw 
         #imageContainer 
             img#mainImage
     script
-        initialize();
+        initializeNavigator();

@@ -1,6 +1,6 @@
 #container {
-     margin-left: 30px;
-   margin-top: 10px;
+    margin-left: 30px;
+    margin-top: 10px;
     width: 1000px;
     font-family: 'Indie Flower';
     background-color: whitesmoke;
@@ -13,6 +13,7 @@
 .headerContainer {
     font-size: 36px;
     font-weight: bold;
+    color: blue;
 }
 #mainImage {
     max-height: 750px;

@@ -1,9 +1,10 @@
 'use strict';
-var express, routes, config, app, application;
+var browserify, express, routes, config, app, application;
+browserify = require('browserify-middleware');
 express = require('express');
 config = require('./config');
 routes = require('./modules/routes').routes();
 app = express();
-config.configure(app, express);
+config.configure(app, express, browserify);
 routes.initialize(app);
-application = app.listen(4000);
+application = app.listen(3333);
